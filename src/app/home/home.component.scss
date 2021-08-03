@@ -1,0 +1,16 @@
+@import 'node_modules/@swimlane/ngx-datatable/index.scss';
+@import 'node_modules/@swimlane/ngx-datatable/themes/material.scss';
+@import 'node_modules/@swimlane/ngx-datatable/themes/bootstrap.scss';
+
+i {
+  font-size: 24px;
+}
+
+.datatable-body .datatable-body-row .datatable-body-cell {
+  padding: 0 1.2rem !important;
+  display: flex;
+  align-items: center;
+}
+
+
+
