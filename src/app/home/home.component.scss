@@ -2,6 +2,15 @@
 @import 'node_modules/@swimlane/ngx-datatable/themes/material.scss';
 @import 'node_modules/@swimlane/ngx-datatable/themes/bootstrap.scss';
 
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    margin-bottom: 20px;
+  }
+}
+
 i {
   font-size: 24px;
 }
@@ -10,6 +19,10 @@ i {
   padding: 0 1.2rem !important;
   display: flex;
   align-items: center;
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+  padding: 0.4rem 1.2rem !important;
 }
 
 

@@ -25,31 +25,33 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       const styleSheets: any[] = Object.values(document.styleSheets);
-      const cssRules: {} = this.getCSSRulesInStyleSheets(styleSheets);
+      const cssRules: any[] = this.getCSSRulesListInStyleSheets(styleSheets);
       if (cssRules) {
-        this.icoMoonSelectors = this.getValidSelectors(cssRules);
+        this.icoMoonSelectors = this.getValidZISelectors(cssRules);
         this.icoMoonSelectors = this.removeDuplicates();
       }
       this.initializeDataTable();
     });
   }
 
-  private getCSSRulesInStyleSheets(styleSheets: any[]) {
-    return styleSheets.reduce((acc, crr) => {
-      const rules = crr.cssRules || crr.rules;
-      if (rules) {
-        return {
-          ...acc,
-          ...rules
-        };
-      }
-      return acc;
-    }, {});
+  private getCSSRulesListInStyleSheets(styleSheets: any[]): any[] {
+    let allRules = [];
+    styleSheets.forEach((sheet) => {
+      const rules = {
+        ...(sheet.cssRules || {}),
+        ...(sheet.rules || {})
+      };
+      allRules = [
+          ...allRules,
+          ...Object.values(rules)
+      ];
+    });
+    return allRules;
   }
 
-  private getValidSelectors(cssRules: {}) {
+  private getValidZISelectors(cssRules: any[]): any[] {
     const allSelectors: any[] = [];
-    Object.values(cssRules).forEach((styleRule: CSSStyleRule) => {
+    cssRules.forEach((styleRule: CSSStyleRule) => {
       if (styleRule && styleRule.selectorText && styleRule.selectorText.includes('.icon-')) {
         const selectors: any[] = styleRule.selectorText
             .split(' ')

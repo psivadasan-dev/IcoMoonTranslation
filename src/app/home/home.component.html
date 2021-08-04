@@ -1,5 +1,11 @@
-<ngx-datatable class="ngx-datatable material fixed-header virtualized"
-               [rows]="rows"
-               [columns]="columns"
-               [headerHeight]="30">
-</ngx-datatable >
+<div class="table-wrapper">
+
+    <div class="header">
+        Total Icons: {{rows.length}}
+    </div>
+
+    <ngx-datatable class="ngx-datatable material fixed-header virtualized"
+                   [rows]="rows"
+                   [columns]="columns">
+    </ngx-datatable >
+</div>
